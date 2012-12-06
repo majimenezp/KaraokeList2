@@ -1,0 +1,13 @@
+﻿<Window x:Class="TestWPF.VentanaKar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VentanaKar" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="53*"/>
+        </Grid.ColumnDefinitions>
+        <Image  Name="imagen" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Stretch="UniformToFill" Uid="imagen" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+@section js{
+
+}
+<div class="row">
+    <div class="span6">
+        <form id="formSearch" class="form-search" action="/Search" method="post">
+            <input type="text" value="@Model.username" class="input-large" placeholder="Your name" name="username" id="username"/>
+            <input name="searchText" id="searchText" type="text" value="" class="input-large search-query" placeholder="Type songname or artist" />
+            <button class="btn" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="span8">
+        <ul class="searchResults">
+            @foreach (var slot in Model.queue)
+            {
+                <li class="result" id="@slot.Id">
+                    <h4>@slot.FileName</h4>
+                    <span>Requested by:@slot.UserName</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDGNet", "CDGNet\CDGNet.vbproj", "{FD6CDC6A-74DE-4A71-8EFB-38E4EFA719CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaraokePlayer", "KaraokePlayer\KaraokePlayer.csproj", "{692FC99A-A61E-41A5-A507-16A9AEC96964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{94412871-A9D3-4A7C-8258-8970FE2FF9B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWPF", "TestWPF\TestWPF.csproj", "{D4C206DB-D4B5-4F8B-8162-57214F4DB934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaraokeList2", "KaraokeList2\KaraokeList2.csproj", "{73FD6D55-6DE0-4BCC-9AFB-291A4F7F47D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigration", "DBMigration\DBMigration.csproj", "{B2545E82-D7E4-450C-B575-1A08B7C8E0AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FE67B42D-8446-41BC-B415-40ED2396FADD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD6CDC6A-74DE-4A71-8EFB-38E4EFA719CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6CDC6A-74DE-4A71-8EFB-38E4EFA719CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6CDC6A-74DE-4A71-8EFB-38E4EFA719CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6CDC6A-74DE-4A71-8EFB-38E4EFA719CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692FC99A-A61E-41A5-A507-16A9AEC96964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692FC99A-A61E-41A5-A507-16A9AEC96964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692FC99A-A61E-41A5-A507-16A9AEC96964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692FC99A-A61E-41A5-A507-16A9AEC96964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94412871-A9D3-4A7C-8258-8970FE2FF9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94412871-A9D3-4A7C-8258-8970FE2FF9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94412871-A9D3-4A7C-8258-8970FE2FF9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94412871-A9D3-4A7C-8258-8970FE2FF9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C206DB-D4B5-4F8B-8162-57214F4DB934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C206DB-D4B5-4F8B-8162-57214F4DB934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C206DB-D4B5-4F8B-8162-57214F4DB934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C206DB-D4B5-4F8B-8162-57214F4DB934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73FD6D55-6DE0-4BCC-9AFB-291A4F7F47D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FD6D55-6DE0-4BCC-9AFB-291A4F7F47D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FD6D55-6DE0-4BCC-9AFB-291A4F7F47D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FD6D55-6DE0-4BCC-9AFB-291A4F7F47D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2545E82-D7E4-450C-B575-1A08B7C8E0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2545E82-D7E4-450C-B575-1A08B7C8E0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2545E82-D7E4-450C-B575-1A08B7C8E0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2545E82-D7E4-450C-B575-1A08B7C8E0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

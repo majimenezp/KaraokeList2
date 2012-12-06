@@ -1,0 +1,15 @@
+﻿<Window x:Class="KaraokeList2.KaraokeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KaraokeWindow" Height="480" Width="640">
+    <Grid>
+        <Image Name="karImage" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        </Image>
+        <TextBlock Name="txtAnuncio" Text="text" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" FontFamily="Calibri" Foreground="Black">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="Blue" BlurRadius="10"></DropShadowEffect>
+            </TextBlock.Effect>
+        </TextBlock>
+
+    </Grid>
+</Window>

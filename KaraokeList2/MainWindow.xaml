@@ -1,0 +1,76 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:KaraokeList2.Entities"
+        xmlns:Entities="clr-namespace:KaraokeList2" x:Class="KaraokeList2.MainWindow"
+        Title="MainWindow" Height="700" Width="907" Loaded="Window_Loaded_1"  TextOptions.TextFormattingMode="Display">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.268"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Button x:Name="btnDbSetup" Content="Database setup" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" Click="btnDbSetup_Click" Height="22"/>
+        <Button x:Name="btnPause" Content="" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Width="48" Height="48" ToolTip="Pause" Click="btnPause_Click" SnapsToDevicePixels="True">
+            <Button.Background>
+                <ImageBrush ImageSource="Icons/pause.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnBack" Content="" HorizontalAlignment="Left" Margin="341,10,0,0" VerticalAlignment="Top" Width="48" ToolTip="Back" Height="48" Click="btnBack_Click" SnapsToDevicePixels="True">
+            <Button.Background>
+                <ImageBrush ImageSource="Icons/back.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnPlay" Content="" HorizontalAlignment="Left" Margin="447,10,0,0" VerticalAlignment="Top" Width="48" Height="48" ToolTip="Play" Click="btnPlay_Click" SnapsToDevicePixels="True">
+            <Button.Background>
+                <ImageBrush ImageSource="Icons/play.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnStop" Content="" HorizontalAlignment="Left" Margin="500,10,0,0" VerticalAlignment="Top" Width="48" Height="48" ToolTip="Stop" Click="btnStop_Click" SnapsToDevicePixels="True">
+            <Button.Background>
+                <ImageBrush ImageSource="Icons/stop.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnNext" Content="" HorizontalAlignment="Left" Margin="553,10,0,0" VerticalAlignment="Top" Width="48" Height="48" ToolTip="Next" Click="btnNext_Click" SnapsToDevicePixels="True">
+            <Button.Background>
+                <ImageBrush ImageSource="Icons/foward.png"/>
+            </Button.Background>
+        </Button>
+        <DataGrid Name="Gridqueque" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" Height="200" Width="700" FontFamily="Calibri" FontSize="14" SnapsToDevicePixels="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove" ToolTip="Remove from queue" Click="Click_RemoveFromQueue"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Label Content="Karaoke queue" HorizontalAlignment="Left" Margin="7,301,0,0" VerticalAlignment="Top" Width="276" Height="26"/>
+        <Label Content="Search:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="26" Width="48"/>
+        <TextBox Name="txtSearchText" HorizontalAlignment="Left" Height="23" Margin="10,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193" SnapsToDevicePixels="True"/>
+        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="208,68,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click" Height="22"/>
+        <DataGrid Name="GridResults"  TextOptions.TextFormattingMode="Ideal"  AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Height="200" Width="700" IsReadOnly="True" FontFamily="Calibri" FontSize="14" SnapsToDevicePixels="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Add" ToolTip="Add to queue" Click="Click_AddSongToQueue"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>

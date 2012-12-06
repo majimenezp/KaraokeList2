@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+@section js{
+    <script type="text/javascript">
+        /// <reference path="../../Content/Scripts/jquery-1.8.3-vsdoc.js" />
+        $(document).on("ready", start);
+        function start() {
+            $(".addbtn").click(function () {
+                var url = $(this).attr("data-request");
+                $.getJSON(url, {}, function (data) {
+                    alert("Song added to queue");
+                });
+            });
+        }
+    </script>
+}
+<a href="/" class="btn btn-primary">Back</a>
+<ul class="searchResults">
+    @foreach (var song in Model.Results)
+    {
+        <li class="result" id="@song.Id">
+            <h4>@song.Filename</h4>
+            <a data-request="/AddToQueue/@song.Id/RequestedBy/@Model.RequestedBy/" class="btn btn-success addbtn">Add to queue</a>
+        </li>
+    }
+</ul>
+<a href="/" class="btn btn-primary">Back</a>
