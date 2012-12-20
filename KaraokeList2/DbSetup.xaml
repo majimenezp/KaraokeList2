@@ -10,7 +10,6 @@
         <ListBox Name="lstFolders" HorizontalAlignment="Left" Height="207" Margin="10,10,0,0" VerticalAlignment="Top" Width="274" Grid.ColumnSpan="2"/>
         <Button Name="btnAddFolder" Content="Add folder..." Grid.Column="1" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Width="75" Click="btnAddFolder_Click"/>
         <Button Name="btnDelFolder" Content="Delete folder" Grid.Column="1" HorizontalAlignment="Left" Margin="19,37,0,0" VerticalAlignment="Top" Width="75" Click="btnDelFolder_Click"/>
-        <Button Name="btnSaveClose" Content="Save and close" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top" Width="140"/>
         <Button Name="btnScan" Content="Scan now" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="75" Click="btnScan_Click"/>
 
     </Grid>

@@ -61,6 +61,7 @@ namespace KaraokeList2
 
         public void ClearKaraokeFile()
         {
+            mem.KaraokeFiles.DeleteAll();
             db.KaraokeFiles.DeleteAll();
         }
 

@@ -11,8 +11,8 @@ namespace KaraokeList2
         public string GetRootPath()
         {
             return
-                //System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-           @"C:\Users\majimenezp\Documents\Visual Studio 2012\Projects\KaraokeList\KaraokeList2"; 
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+           //@"C:\Users\majimenezp\Documents\Visual Studio 2012\Projects\KaraokeList\KaraokeList2"; 
         }
     }
 }

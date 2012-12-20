@@ -99,8 +99,11 @@ namespace KaraokeList2
         private void Click_RemoveFromQueue(object sender, RoutedEventArgs e)
         {
             var slot = (sender as Button).DataContext as Entities.KaraokeQueue;
-            dal.DeleteSlotInQueue(slot.Id);
-            Gridqueque.ItemsSource = dal.GetQueue();
+            if (slot != null)
+            {
+                dal.DeleteSlotInQueue(slot.Id);
+                Gridqueque.ItemsSource = dal.GetQueue();
+            }
         }
         private void Click_AddSongToQueue(object sender, RoutedEventArgs e)
         {
