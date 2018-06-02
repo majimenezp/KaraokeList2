@@ -14,6 +14,8 @@ using Ookii.Dialogs.Wpf;
 using System.IO;
 using System.Threading.Tasks;
 using KaraokeList2.Entities;
+using System.Text.RegularExpressions;
+
 namespace KaraokeList2
 {
     /// <summary>
@@ -31,10 +33,10 @@ namespace KaraokeList2
         private void btnAddFolder_Click(object sender, RoutedEventArgs e)
         {
             VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
-            var res=dialog.ShowDialog();
+            var res = dialog.ShowDialog();
             if (res ?? false)
             {
-                var karDir=new KaraokeDirectory() { Id=0, Directory=dialog.SelectedPath};
+                var karDir = new KaraokeDirectory() { Id = 0, Directory = dialog.SelectedPath };
                 dal.InsertDirectory(karDir);
                 lstFolders.Items.Add(karDir);
             }
@@ -49,21 +51,27 @@ namespace KaraokeList2
 
         private void btnScan_Click(object sender, RoutedEventArgs e)
         {
+            Regex removeNumbers = new Regex(@"^[\d-]*\s*", RegexOptions.Singleline | RegexOptions.Compiled);
             var dal = DAL.Instance;
             dal.ClearKaraokeFile();
             foreach (var item in lstFolders.Items)
             {
-                var folderPath=item.ToString();
+                var folderPath = item.ToString();
                 DirectoryInfo dir = new DirectoryInfo(folderPath);
-                var files=dir.EnumerateFiles("*.cdg", SearchOption.AllDirectories);
-                Parallel.ForEach(files, file => {
-                    var fileName=System.IO.Path.GetFileNameWithoutExtension(file.Name);
-                    var insFile=new KaraokeFile();
-                    insFile.Filename = fileName;
+                var files = dir.EnumerateFiles("*.cdg", SearchOption.AllDirectories);
+                Parallel.ForEach(files, file =>
+                {
+                    var dirName = System.IO.Path.GetFileNameWithoutExtension(file.DirectoryName);
+                    var fileName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+                    fileName = removeNumbers.Replace(fileName, "");
+                    dirName = removeNumbers.Replace(dirName, "");
+                    //fileName =Regex.Replace(fileName, @"^[\d-]*\s*","",RegexOptions.IgnoreCase)
+                    var insFile = new KaraokeFile();
+                    insFile.Filename = dirName + " " +fileName;
                     insFile.FullFilePath = file.FullName;
                     dal.InsertFile(insFile);
                 });
-                
+
             }
             dal.CommitScan();
             MessageBox.Show("Scanning finished", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -72,7 +80,7 @@ namespace KaraokeList2
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            var dirs=dal.GetDirectories();
+            var dirs = dal.GetDirectories();
             if (dirs != null)
             {
                 foreach (var dir in dirs)

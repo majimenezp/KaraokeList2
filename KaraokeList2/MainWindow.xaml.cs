@@ -32,6 +32,7 @@ namespace KaraokeList2
         BackgroundWorker workerAddToQueue;
 
         public static readonly Subject<KaraokeQueue> NewRequest = new Subject<KaraokeQueue>();
+        public static readonly Subject<CommandRequest> NewCommand = new Subject<CommandRequest>();
         public MainWindow()
         {
             InitializeComponent();
@@ -50,7 +51,14 @@ namespace KaraokeList2
                 return NewRequest;
             }
         }
-        
+
+        private static IObservable<CommandRequest> OnCommandRequest
+        {
+            get
+            {
+                return NewCommand;
+            }
+        }
 
         void workerSearch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -73,7 +81,7 @@ namespace KaraokeList2
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            var queue=dal.GetQueue();
+            var queue = dal.GetQueue();
             if (queue != null)
             {
                 Gridqueque.ItemsSource = queue;
@@ -83,10 +91,36 @@ namespace KaraokeList2
             karWindow.KaraokeEnded += karWindow_KaraokeEnded;
             NewRequest.Subscribe(newRequest =>
             {
-                Gridqueque.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(delegate() {
+                Gridqueque.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(delegate ()
+                {
                     Gridqueque.ItemsSource = dal.GetQueue();
                 }));
-                
+
+            });
+            NewCommand.Subscribe(newCommand =>
+            {
+                Gridqueque.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(delegate ()
+                {
+                    switch (newCommand.Command)
+                    {
+                        case CommandTypes.Play:
+                            PlaySong();
+                            break;
+                        case CommandTypes.Stop:
+                            karWindow.Stop();
+                            break;
+                        case CommandTypes.Next:
+                            NextSong();
+                            break;
+                        case CommandTypes.Remove:
+                            RemoveFromQueue(Convert.ToInt32(newCommand.CommandText));
+                            break;
+                        case CommandTypes.Back:
+                        case CommandTypes.Other:
+                            break;
+                    }
+                    Gridqueque.ItemsSource = dal.GetQueue();
+                }));
             });
         }
 
@@ -101,20 +135,26 @@ namespace KaraokeList2
             var slot = (sender as Button).DataContext as Entities.KaraokeQueue;
             if (slot != null)
             {
-                dal.DeleteSlotInQueue(slot.Id);
-                Gridqueque.ItemsSource = dal.GetQueue();
+                RemoveFromQueue(slot.Id);
+                
             }
+        }
+
+        private void RemoveFromQueue(int id)
+        {
+            dal.DeleteSlotInQueue(id);
+            Gridqueque.ItemsSource = dal.GetQueue();
         }
         private void Click_AddSongToQueue(object sender, RoutedEventArgs e)
         {
             var file = (sender as Button).DataContext as Entities.KaraokeFile;
             workerAddToQueue.RunWorkerAsync(file);
-           
+
         }
 
         void workerAddToQueue_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result=(List<KaraokeQueue>)e.Result;
+            var result = (List<KaraokeQueue>)e.Result;
             Gridqueque.ItemsSource = result;
         }
 
@@ -128,15 +168,29 @@ namespace KaraokeList2
             tmp.UserName = "console";
             tmp.PlayOrder = 10;
             dal.InsertQueueSlot(tmp);
-            e.Result=dal.GetQueue();
+            e.Result = dal.GetQueue();
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            current = dal.GetNextFileInQueue();
-            if (current != null)
+            PlaySong();
+        }
+
+        private void PlaySong()
+        {
+            var next = dal.GetNextFileInQueue();
+            if (next != null)
             {
-                karWindow.Start(current.FilePath,current.Id, "Cancion pedida por:" + current.UserName, "Viene la siguiente cancion");
+                try
+                {
+                    karWindow.Start(next.FilePath, next.Id, "Cancion pedida por:" + next.UserName, "Viene la siguiente cancion");
+                    current = next;
+                }
+                catch (Exception ex1)
+                {
+                    current = null;
+                    next = null;
+                }                
             }
         }
 
@@ -146,6 +200,11 @@ namespace KaraokeList2
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            NextSong();
+        }
+
+        private void NextSong()
         {
             if (karWindow.CurrentCdgId > 0)
             {

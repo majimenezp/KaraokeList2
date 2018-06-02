@@ -82,6 +82,11 @@ namespace KaraokeList2
             return results;
         }
 
+        internal List<KaraokeFile> GetAll()
+        {
+            List<KaraokeFile> results = db.KaraokeFiles.All().ToList<KaraokeFile>();
+            return results;
+        }
         internal bool InsertQueueSlot(KaraokeQueue tmp)
         {
             var result = db.Queue.Insert(tmp);

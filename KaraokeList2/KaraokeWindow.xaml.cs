@@ -135,6 +135,7 @@ namespace KaraokeList2
         {
             timer.Stop();
             waveOutDevice.Stop();
+            cdgFile.Dispose();
         }
 
         public WaveStream CreateMp3OutPut(string fileName)

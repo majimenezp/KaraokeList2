@@ -118,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\CommandRequest.cs" />
+    <Compile Include="Entities\CommandTypes.cs" />
+    <Compile Include="Entities\KaraokeCatalog.cs" />
+    <Compile Include="Modules\ControlModule.cs" />
     <Compile Include="Modules\MainModule.cs" />
     <Compile Include="RoothPathProvider.cs" />
     <Compile Include="SelfHostBootstrapper.cs" />
@@ -178,6 +182,12 @@
     </Content>
     <Content Include="x64\SQLite.Interop.dll" />
     <Content Include="x86\SQLite.Interop.dll" />
+    <Content Include="Views\Main\ControlIndex.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Main\bigresults.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="web.config" />
     <Resource Include="Icons\foward.png" />
     <Resource Include="Icons\stop.png" />
