@@ -13,9 +13,12 @@ namespace KaraokeList2
     public partial class App : Application
     {
         public static NancyHost Host;
-        public App():base()
+        public static SelfHostBootstrapper bootstrapper;
+        public App() : base()
         {
-            Host = new NancyHost(new Uri[] { new Uri("http://localhost:9090") });
+            string httpPort = System.Configuration.ConfigurationManager.AppSettings.Get("httpport") ?? "80";
+            bootstrapper = new SelfHostBootstrapper();
+            Host = new NancyHost(bootstrapper, new Uri[] { new Uri($"http://localhost:{httpPort}") });
             Host.Start();
         }
         protected override void OnExit(ExitEventArgs e)
